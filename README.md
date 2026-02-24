@@ -1,7 +1,7 @@
 # conways-game-of-life
 
 ## About This Project
-This is my **first solo project**! I am building this to practice my logic and programming skills by implementing one of the most famous examples of cellular automata: **Conway's Game of Life**.
+This is my **first solo project**! I am building this to practice my logic and programming skills by implementing one of the most famous examples of cellular automata: **Conway's Game of Life**. I've always been fascinated with the way CGoL looks. Something about how abstract and chaotic it can be, but also, if you put enough efort in to finding certain combintions, it can give life to the most beautiful patterns.
 
 ## What is Conway's Game of Life?
 Created by mathematician John Conway in 1970, it's not a "game" in the traditional sense with players. Instead, it is a **zero-player game**. 
