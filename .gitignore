@@ -1,0 +1,31 @@
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+mmmmmmmmmmmm
+mmmmm
+
+# Distribution / Build outputs (from PyInstaller)
+bin/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+*.spec
+
+# Environments (if you ever use a virtual environment)
+.env
+.venv
+env/
+venv/
+ENV/
+
+# System files
+.DS_Store
+Thumbs.db

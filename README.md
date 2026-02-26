@@ -20,6 +20,7 @@ To run this simulation on your local machine, follow these steps:
 ### Prerequisites
 Make sure you have **Python 3.x** installed. You will also need the **Pygame** library.
 
+
 ### Installation
 1. **Clone the repository:**
    ```bash
@@ -29,7 +30,7 @@ Make sure you have **Python 3.x** installed. You will also need the **Pygame** l
 
 2. **Install dependencies:**
     ```bash
-    pip install pygame
+    pip install -r requirements.txt
     ```
 
 3. **Run the game:**
