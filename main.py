@@ -1,15 +1,18 @@
 import pygame
-from constants import WIDTH, HEIGHT, ROWS, COLS, CELL_SIZE, BACKGROUND_COLOR, GRID_LINE_COLOR, FPS, LIVE_CELL_COLOR
+from constants import *
 from cell import Cell
-import time
+
+
+
 def draw_grid(surface):
-    
     for x in range(0, WIDTH, CELL_SIZE):
         pygame.draw.line(surface, GRID_LINE_COLOR, (x, 0), (x, HEIGHT), 2)
     
     for y in range(0, HEIGHT, CELL_SIZE):
         pygame.draw.line(surface, GRID_LINE_COLOR, (0, y), (WIDTH, y), 2)
-
+        
+    pygame.draw.rect(surface, BORDER_COLOR, (0,0,WIDTH, HEIGHT), 3)
+ 
 def count_neighbours(board, cell, x, y):
     coordinate_offset = [[-1,-1],[0,-1],[+1,-1],[-1,0],
                          [+1,0],[-1,+1],[0,+1],[+1,+1]]
@@ -37,19 +40,23 @@ def main():
     pygame.init()
 
     pygame.display.set_caption("Conway's Game of Life")
+    pygame.font.init()
     
     window_surface = pygame.display.set_mode((WIDTH, HEIGHT))
     background = pygame.Surface((WIDTH, HEIGHT))
     background.fill(pygame.Color(BACKGROUND_COLOR))
+    font = pygame.font.SysFont("Gill Sans", 20)
+    
     board = [[Cell() for _ in range(COLS)] for _ in range(ROWS)]
     clock = pygame.time.Clock()
     draw_value = False
     is_drawing = False
-    
-    
+
     frame_count = 0
     is_paused = True
     is_running = True
+    paused_txt = font.render("Paused", False, (255,255,255))
+    show_paused_txt = True
     
     while is_running:
         frame_count += 1 
@@ -63,6 +70,7 @@ def main():
             
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    show_paused_txt = not show_paused_txt
                     is_paused = not is_paused
             
             if event.type == pygame.MOUSEBUTTONUP:
@@ -85,10 +93,6 @@ def main():
             board[row][col].is_alive = draw_value
         
 
-        
-            
-            
-            
         if not is_paused:
             if frame_count % 5 == 0:
                 # Esto es la parte de preparacion PHASE 1:         
@@ -110,9 +114,12 @@ def main():
                 pygame.draw.rect(window_surface,color, (ix*CELL_SIZE, iy*CELL_SIZE, CELL_SIZE, CELL_SIZE) )
        
         
-                    
-                
+        
+        
         draw_grid(window_surface)
+        if show_paused_txt:
+            window_surface.blit(paused_txt, ((WIDTH//2) - 60 ,10))
+                    
         pygame.display.update()
         
         

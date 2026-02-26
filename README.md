@@ -13,6 +13,36 @@ Its evolution is determined by its initial state, requiring no further input. Yo
 3.  **Overpopulation:** Any live cell with more than three live neighbors dies.
 4.  **Reproduction:** Any dead cell with exactly three live neighbors becomes a live cell.
 
+## Getting Started
+
+To run this simulation on your local machine, follow these steps:
+
+### Prerequisites
+Make sure you have **Python 3.x** installed. You will also need the **Pygame** library.
+
+### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/oldmanmoe/conways-game-of-life.git](https://github.com/oldmanmoe/conways-game-of-life.git)
+   cd conways-game-of-life
+   ```
+
+2. **Install dependencies:**
+    ```bash
+    pip install pygame
+    ```
+
+3. **Run the game:**
+    ```bash
+    python main.py
+    ```
+## How to Play
+Getting the simulation started is easy:
+
+1. **Design your World:** Click on the squares in the grid to toggle them on or off. This sets up your initial "seed" pattern.
+2. **Start the Simulation:** Once you're happy with your creation, press the **SPACE** bar to watch the generations evolve.
+3. **That's it!** Sit back and watch the chaos (or order) unfold. hehehe
+
 ## Tech Stack
 * **Language:** Python
 * **Library:** Pygame (for the visualization)
