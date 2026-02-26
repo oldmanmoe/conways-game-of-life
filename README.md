@@ -21,21 +21,22 @@ To run this simulation on your local machine, follow these steps:
 Make sure you have **Python 3.x** installed. You will also need the **Pygame** library.
 
 
-### Installation
-1. **Clone the repository:**
+## 🕹️ How to Run the Game
+
+### Option 1: For Players (Easy Mode)
+If you aren't a programmer and just want to play, follow these steps:
+1. **Download:** Click the green **Code** button at the top and select **Download ZIP**. Extract the files to your computer.
+2. **Install Python:** Download the latest version from [python.org](https://www.python.org/). 
+   > **Note:** During installation, make sure to check the box: **"Add Python to PATH"**.
+3. **Set up Pygame:** Open your terminal (Command Prompt on Windows) and type:
+   `pip install pygame`
+4. **Launch:** Open the folder and double-click `main.py` (or drag it into your terminal and press Enter).
+
+### Option 2: For Developers
+If you want to explore the code or contribute:
+1. **Clone the repo:**
    ```bash
    git clone [https://github.com/oldmanmoe/conways-game-of-life.git](https://github.com/oldmanmoe/conways-game-of-life.git)
-   cd conways-game-of-life
-   ```
-
-2. **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. **Run the game:**
-    ```bash
-    python main.py
     ```
 ## How to Play
 Getting the simulation started is easy:
