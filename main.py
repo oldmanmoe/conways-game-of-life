@@ -1,7 +1,7 @@
 import pygame
 from constants import WIDTH, HEIGHT, ROWS, COLS, CELL_SIZE, BACKGROUND_COLOR, GRID_LINE_COLOR, FPS, LIVE_CELL_COLOR
 from cell import Cell
-
+import time
 def draw_grid(surface):
     
     for x in range(0, WIDTH, CELL_SIZE):
@@ -43,10 +43,18 @@ def main():
     background.fill(pygame.Color(BACKGROUND_COLOR))
     board = [[Cell() for _ in range(COLS)] for _ in range(ROWS)]
     clock = pygame.time.Clock()
+    paint_mode = False
 
+    frame_count = 0
     is_paused = True
     is_running = True
+    
     while is_running:
+        frame_count += 1 
+        if frame_count >= FPS:
+            frame_count = 0
+        clock.tick(FPS)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 is_running = False
@@ -55,36 +63,37 @@ def main():
                 if event.key == pygame.K_SPACE:
                     is_paused = not is_paused
                 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    row = event.pos[1] // CELL_SIZE
-                    col = event.pos[0] // CELL_SIZE
-                    board[row][col].is_alive = not board[row][col].is_alive
-            
-     
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                row = event.pos[1] // CELL_SIZE
+                col = event.pos[0] // CELL_SIZE
+                board[row][col].is_alive = not board[row][col].is_alive
+               
         if not is_paused:
-        # Esto es la parte de preparacion PHASE 1:         
-            for y, row in enumerate(board):
-                for x, cell in enumerate(row):
-                    count_neighbours(board, cell, x, y)
-                    cell.prepare_next_gen()
+            if frame_count % 5 == 0:
+                # Esto es la parte de preparacion PHASE 1:         
+                for y, row in enumerate(board):
+                    for x, cell in enumerate(row):
+                        count_neighbours(board, cell, x, y)
+                        cell.prepare_next_gen()
         
-        #Esta se supone que es donde se actualize PHASE 2:
-            for row in board:
-                for cell in row:
-                    cell.update()
-        
+                #Esta se supone que es donde se actualize PHASE 2:
+                for row in board:
+                    for cell in row:
+                        cell.update()
+            
+  
         #Esta se supone que es ahora donde se dibuja lo que ya se calculo PHASE 3:
         for iy, row_of_cells in enumerate(board):
             for ix, cell in enumerate(row_of_cells):
                 color = ((LIVE_CELL_COLOR) if cell.is_alive else (BACKGROUND_COLOR))
                 pygame.draw.rect(window_surface,color, (ix*CELL_SIZE, iy*CELL_SIZE, CELL_SIZE, CELL_SIZE) )
        
+        
                     
                 
         draw_grid(window_surface)
         pygame.display.update()
-        clock.tick(FPS)
+        
         
 
     
