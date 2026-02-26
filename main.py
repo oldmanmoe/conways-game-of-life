@@ -43,8 +43,10 @@ def main():
     background.fill(pygame.Color(BACKGROUND_COLOR))
     board = [[Cell() for _ in range(COLS)] for _ in range(ROWS)]
     clock = pygame.time.Clock()
-    paint_mode = False
-
+    draw_value = False
+    is_drawing = False
+    
+    
     frame_count = 0
     is_paused = True
     is_running = True
@@ -62,12 +64,31 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     is_paused = not is_paused
+            
+            if event.type == pygame.MOUSEBUTTONUP:
+               is_drawing = False
                 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                row = event.pos[1] // CELL_SIZE
-                col = event.pos[0] // CELL_SIZE
-                board[row][col].is_alive = not board[row][col].is_alive
-               
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                row = mouse_y // CELL_SIZE
+                col = mouse_x // CELL_SIZE
+                if board[row][col].is_alive == True:
+                    draw_value = False
+                if board[row][col].is_alive == False:
+                    draw_value = True
+                is_drawing = True
+                    
+        if is_drawing == True:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            row = mouse_y // CELL_SIZE
+            col = mouse_x // CELL_SIZE
+            board[row][col].is_alive = draw_value
+        
+
+        
+            
+            
+            
         if not is_paused:
             if frame_count % 5 == 0:
                 # Esto es la parte de preparacion PHASE 1:         
