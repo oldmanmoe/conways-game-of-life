@@ -52,4 +52,3 @@ Getting the simulation started is easy:
 
 ---
 *Follow my journey at [github.com/oldmanmoe](https://github.com/oldmanmoe)*
-
