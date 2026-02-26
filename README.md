@@ -1,4 +1,4 @@
-# conways-game-of-life
+# Conways Game Of Life
 
 ## About This Project
 This is my **first solo project**! I am building this to practice my logic and programming skills by implementing one of the most famous examples of cellular automata: **Conway's Game of Life**. I've always been fascinated with the way CGoL looks. Something about how abstract and chaotic it can be, but also, if you put enough efort in to finding certain combintions, it can give life to the most beautiful patterns.
@@ -51,3 +51,4 @@ Getting the simulation started is easy:
 
 ---
 *Follow my journey at [github.com/oldmanmoe](https://github.com/oldmanmoe)*
+
