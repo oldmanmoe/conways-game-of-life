@@ -34,9 +34,16 @@ def count_neighbours(board, cell, x, y):
                 count += 1
     cell.neighbour_count = count
     return count
-            
 
+def reset_board(board):
+    for x, row in enumerate(board):
+        for y, cell in enumerate(row):
+            cell.next_state = None
+            cell.is_alive = False          
 def main():
+    
+
+    
     pygame.init()
 
     pygame.display.set_caption("Conway's Game of Life")
@@ -56,6 +63,8 @@ def main():
     is_paused = True
     is_running = True
     paused_txt = font.render("Paused", False, (255,255,255))
+    reset_board_txt = font.render("Press [R] to reset", False, (255, 255, 255))
+    unpause_txt = font.render("Press [Space] to unpause", False, (255, 255, 255))
     show_paused_txt = True
     
     while is_running:
@@ -72,6 +81,9 @@ def main():
                 if event.key == pygame.K_SPACE:
                     show_paused_txt = not show_paused_txt
                     is_paused = not is_paused
+
+                if event.key == pygame.K_r:
+                    reset_board(board)
             
             if event.type == pygame.MOUSEBUTTONUP:
                is_drawing = False
@@ -119,10 +131,11 @@ def main():
         draw_grid(window_surface)
         if show_paused_txt:
             window_surface.blit(paused_txt, ((WIDTH//2) - 60 ,10))
-                    
+            window_surface.blit(unpause_txt, ((WIDTH//2 - 130), 35))
+            window_surface.blit(reset_board_txt, ((WIDTH//2) - 100 ,60))        
         pygame.display.update()
         
-        
+    
 
     
 if __name__ == "__main__":
